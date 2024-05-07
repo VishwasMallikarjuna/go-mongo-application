@@ -16,3 +16,7 @@ func main() {
 	startServer()
 	os.Exit(0)
 }
+
+func configureMgmtServer(e *echo.Echo, args []string) (int, func(), error) {
+	
+}
