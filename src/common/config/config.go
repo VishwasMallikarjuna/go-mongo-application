@@ -1,6 +1,12 @@
 package config
 
-import "flag"
+import (
+	"flag"
+	"strings"
+
+	"github.com/peterbourgon/ff/v3"
+	"github.com/peterbourgon/ff/v3/ffyaml"
+)
 
 type Config struct {
 	ConfigPath         string
@@ -25,5 +31,22 @@ func GetConfig(configPath string, commandLineFlags []string) (Config, error) {
 	fs.StringVar(&config.MongoDBUri, "mongoDb-uri", "", "(Optional) Azure cosmosDB Mongo API uri")
 	fs.StringVar(&config.MongoDBName, "mongoDb-name", "", "(Optional) Azure cosmosDB Mongo Database name")
 	fs.StringVar(&config.MongoColName, "mongoCol-name", "", "(Optional) Azure cosmosDB Mongo Database Collection name")
+
+	err := ff.Parse(fs, commandLineFlags,
+		ff.WithIgnoreUndefined(true),
+		ff.WithConfigFileFlag("config-path"),
+		ff.WithConfigFileParser(ffyaml.Parser),
+		ff.WithAllowMissingConfigFile(false),
+		ff.WithEnvVarNoPrefix(),
+	)
+	if err != nil {
+		// If the issue isn't related to CL args, also print the usage guide
+		// (it will get printed automatically otherwise).
+		if !strings.Contains(err.Error(), "error parsing commandline args: invalid ") {
+			fs.Usage()
+		}
+		return config, err
+	}
+
 	return config, nil
 }

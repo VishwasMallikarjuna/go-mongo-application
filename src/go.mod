@@ -2,7 +2,10 @@ module github.com/VishwasMallikarjuna/go-mongo-appliacation
 
 go 1.20
 
-require github.com/labstack/echo v3.3.10+incompatible
+require (
+	github.com/labstack/echo v3.3.10+incompatible
+	github.com/peterbourgon/ff/v3 v3.4.0
+)
 
 require (
 	github.com/labstack/gommon v0.4.2 // indirect
@@ -15,4 +18,5 @@ require (
 	golang.org/x/net v0.21.0 // indirect
 	golang.org/x/sys v0.20.0 // indirect
 	golang.org/x/text v0.15.0 // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
