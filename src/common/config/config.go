@@ -48,5 +48,11 @@ func GetConfig(configPath string, commandLineFlags []string) (Config, error) {
 		return config, err
 	}
 
+	err = ValidateConfig(config)
+	if err != nil {
+		fs.Usage()
+		return Config{}, err
+	}
+
 	return config, nil
 }
