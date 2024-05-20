@@ -19,6 +19,10 @@ type Config struct {
 	MongoColName       string
 }
 
+func ValidateConfig(config Config) error {
+	return nil
+}
+
 func GetConfig(configPath string, commandLineFlags []string) (Config, error) {
 	fs := flag.NewFlagSet("goMongoConfig", flag.ContinueOnError)
 
