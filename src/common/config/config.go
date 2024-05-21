@@ -1,6 +1,7 @@
 package config
 
 import (
+	"errors"
 	"flag"
 	"strings"
 
@@ -20,6 +21,11 @@ type Config struct {
 }
 
 func ValidateConfig(config Config) error {
+
+	if len(config.ConfigPath) == 0 {
+		return errors.New("no config file supplied")
+	}
+
 	return nil
 }
 
