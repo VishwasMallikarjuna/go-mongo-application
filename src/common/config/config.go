@@ -26,6 +26,10 @@ func ValidateConfig(config Config) error {
 		return errors.New("no config file supplied")
 	}
 
+	errorBuilder := strings.Builder{}
+	errorHeader := "Configuration errors:"
+	errorBuilder.WriteString(errorHeader)
+
 	return nil
 }
 
