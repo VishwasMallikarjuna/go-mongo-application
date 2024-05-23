@@ -30,6 +30,10 @@ func ValidateConfig(config Config) error {
 	errorHeader := "Configuration errors:"
 	errorBuilder.WriteString(errorHeader)
 
+	if config.NewRelicEnabled && config.NewRelicAppName == "" {
+		errorBuilder.WriteString("\n\tNew Relic monitoring enabled, but the New Relic app name was not specified")
+	}
+
 	return nil
 }
 
