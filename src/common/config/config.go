@@ -34,6 +34,9 @@ func ValidateConfig(config Config) error {
 		errorBuilder.WriteString("\n\tNew Relic monitoring enabled, but the New Relic app name was not specified")
 	}
 
+	if config.NewRelicEnabled && config.NewRelicLicenseKey == "" {
+		errorBuilder.WriteString("\n\tNew Relic monitoring enabled, but the New Relic license key was not specified")
+	}
 	return nil
 }
 
