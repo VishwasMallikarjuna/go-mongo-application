@@ -37,6 +37,11 @@ func ValidateConfig(config Config) error {
 	if config.NewRelicEnabled && config.NewRelicLicenseKey == "" {
 		errorBuilder.WriteString("\n\tNew Relic monitoring enabled, but the New Relic license key was not specified")
 	}
+
+	if config.MongoDBUri == "" {
+		errorBuilder.WriteString("\n\tMongoDB uri was not specified")
+	}
+
 	return nil
 }
 
