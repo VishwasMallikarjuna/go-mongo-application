@@ -42,6 +42,10 @@ func ValidateConfig(config Config) error {
 		errorBuilder.WriteString("\n\tMongoDB uri was not specified")
 	}
 
+	if config.MongoDBName == "" {
+		errorBuilder.WriteString("\n\tMongoDB name was not specified")
+	}
+
 	return nil
 }
 
