@@ -50,6 +50,11 @@ func ValidateConfig(config Config) error {
 		errorBuilder.WriteString("\n\tMongoDB collection name was not specified")
 	}
 
+	errorMsg := errorBuilder.String()
+	if len(errorMsg) > len(errorHeader) {
+		return errors.New(errorMsg)
+	}
+
 	return nil
 }
 
