@@ -28,5 +28,17 @@ func configureMgmtServer(e *echo.Echo, args []string) (int, func(), error) {
 		return 1, nil, err
 	}
 
+	//Initialize Logging - NOTE: we are hard-coding the log output location to Stdout
+	logCfg, err := logwrapper.Initialize(config.LogLevel, os.Stdout)
+	if err != nil {
+		msg := "ERROR: Could NOT initialize Logger: %w"
+		fmt.Fprintf(os.Stderr, fmt.Errorf(msg, err).Error()+"\n")
+		return 3, nil, err //special return code for logging problems
+	}
+	stdFlds := map[string]string{
+		logwrapper.RequestIdField:      "",
+		logwrapper.FunctionPrefixField: "SERVE",
+	}
+
 	return 0, startFunc, nil
 }
