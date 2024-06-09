@@ -5,6 +5,7 @@ go 1.20
 require (
 	github.com/labstack/echo v3.3.10+incompatible
 	github.com/peterbourgon/ff/v3 v3.4.0
+	github.com/sirupsen/logrus v1.9.3
 )
 
 require (
