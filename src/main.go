@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/VishwasMallikarjuna/go-mongo-appliacation/common/config"
+	"github.com/VishwasMallikarjuna/go-mongo-appliacation/common/logwrapper"
 	"github.com/labstack/echo"
 )
 
