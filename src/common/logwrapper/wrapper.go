@@ -7,6 +7,11 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+const (
+	RequestIdField      = "requestId"
+	FunctionPrefixField = "functionPrefix"
+)
+
 type LogConfig struct {
 	Level    logrus.Level
 	Location io.Writer
