@@ -7,6 +7,7 @@ import (
 	"github.com/VishwasMallikarjuna/go-mongo-appliacation/common/config"
 	"github.com/VishwasMallikarjuna/go-mongo-appliacation/common/logwrapper"
 	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 )
 
 func main() {
@@ -40,6 +41,10 @@ func configureMgmtServer(e *echo.Echo, args []string) (int, func(), error) {
 		logwrapper.RequestIdField:      "",
 		logwrapper.FunctionPrefixField: "SERVE",
 	}
+
+	e.Use(
+		middleware.RequestID(), // Generate a request id on the HTTP response headers
+	)
 
 	return 0, startFunc, nil
 }
