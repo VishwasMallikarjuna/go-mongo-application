@@ -46,5 +46,11 @@ func configureMgmtServer(e *echo.Echo, args []string) (int, func(), error) {
 		middleware.RequestID(), // Generate a request id on the HTTP response headers
 	)
 
+	err = mongo.ConnectFromConfig(config)
+	if err != nil {
+		e.Logger.Fatal(err)
+		os.Exit(2)
+	}
+
 	return 0, startFunc, nil
 }
