@@ -42,6 +42,15 @@ func configureMgmtServer(e *echo.Echo, args []string) (int, func(), error) {
 		logwrapper.FunctionPrefixField: "SERVE",
 	}
 
+	//Log the Server startup
+	logger, err := logwrapper.CreateLogger(stdFlds)
+	if err != nil {
+		msg := "ERROR: Could NOT acquire Logger: " + err.Error()
+		fmt.Fprintf(os.Stderr, msg)
+		return 3, nil, err //special return code for logging problems
+	}
+	logger.Infof("HRI serve Startup with minimum Log Level: %s", config.LogLevel)
+
 	e.Use(
 		middleware.RequestID(), // Generate a request id on the HTTP response headers
 	)
