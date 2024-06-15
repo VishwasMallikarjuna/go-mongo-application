@@ -40,3 +40,7 @@ func ParseLevelFromStr(lvlStr string) (logrus.Level, error) {
 	}
 	return level, nil
 }
+
+func CreateLogger(fields map[string]string) (logrus.FieldLogger, error) {
+	return entry, nil
+}
