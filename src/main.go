@@ -49,7 +49,7 @@ func configureMgmtServer(e *echo.Echo, args []string) (int, func(), error) {
 		fmt.Fprintf(os.Stderr, msg)
 		return 3, nil, err //special return code for logging problems
 	}
-	logger.Infof("HRI serve Startup with minimum Log Level: %s", config.LogLevel)
+	logger.Infof("serve Startup with minimum Log Level: %s", config.LogLevel)
 
 	e.Use(
 		middleware.RequestID(), // Generate a request id on the HTTP response headers
