@@ -6,6 +6,7 @@ import (
 
 	"github.com/VishwasMallikarjuna/go-mongo-appliacation/common/config"
 	"github.com/VishwasMallikarjuna/go-mongo-appliacation/common/logwrapper"
+	mongo "github.com/VishwasMallikarjuna/go-mongo-appliacation/mongoApi"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 )
