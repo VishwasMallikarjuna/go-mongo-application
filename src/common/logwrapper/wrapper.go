@@ -3,6 +3,7 @@ package logwrapper
 import (
 	"fmt"
 	"io"
+	"os"
 
 	"github.com/sirupsen/logrus"
 )
@@ -43,4 +44,26 @@ func ParseLevelFromStr(lvlStr string) (logrus.Level, error) {
 
 func CreateLogger(fields map[string]string) (logrus.FieldLogger, error) {
 	return entry, nil
+}
+
+// GetMyLogger is used by each Model/Function to generate it's own logger instance.
+// NOTE: that if there is an error Creating the logger, we panic
+func GetMyLogger(requestId string, prefix string) logrus.FieldLogger {
+	if len(prefix) == 0 {
+		errMsg := "ERROR: Could NOT acquire Logger: prefix value required"
+		panic(errMsg)
+	}
+
+	stdFlds := map[string]string{
+		RequestIdField:      requestId,
+		FunctionPrefixField: prefix,
+	}
+	logger, err := CreateLogger(stdFlds)
+	if err != nil {
+		msg := "From " + prefix + ": ERROR: Could NOT acquire Logger: " + err.Error()
+		fmt.Fprintf(os.Stderr, msg)
+		panic(msg)
+	}
+
+	return logger
 }
