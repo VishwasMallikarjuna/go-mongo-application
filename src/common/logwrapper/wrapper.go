@@ -43,6 +43,15 @@ func ParseLevelFromStr(lvlStr string) (logrus.Level, error) {
 }
 
 func CreateLogger(fields map[string]string) (logrus.FieldLogger, error) {
+
+	fldCount := len(fields)
+	if fldCount < 1 || fields[FunctionPrefixField] == "" {
+		var err error
+		errMsg := "error: Standard fields must contain at least 1 entry: '%s'"
+		err = fmt.Errorf(errMsg, FunctionPrefixField)
+		return nil, err
+	}
+
 	return entry, nil
 }
 
