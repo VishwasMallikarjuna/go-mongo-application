@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/VishwasMallikarjuna/go-mongo-appliacation/common/config"
+	"github.com/VishwasMallikarjuna/go-mongo-appliacation/common/logwrapper"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
