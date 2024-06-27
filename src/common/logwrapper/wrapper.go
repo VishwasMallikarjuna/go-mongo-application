@@ -52,6 +52,10 @@ func CreateLogger(fields map[string]string) (logrus.FieldLogger, error) {
 		return nil, err
 	}
 
+	var logrusLog = logrus.New()
+	logrusLog.SetLevel(globalConfig.Level)
+	logrusLog.SetOutput(globalConfig.Location)
+
 	return entry, nil
 }
 
