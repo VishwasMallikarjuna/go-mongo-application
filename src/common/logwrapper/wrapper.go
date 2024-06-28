@@ -56,6 +56,12 @@ func CreateLogger(fields map[string]string) (logrus.FieldLogger, error) {
 	logrusLog.SetLevel(globalConfig.Level)
 	logrusLog.SetOutput(globalConfig.Location)
 
+	var logFields = map[string]interface{}{}
+	logFields = logrus.Fields{
+		RequestIdField:      fields[RequestIdField],
+		FunctionPrefixField: fields[FunctionPrefixField],
+	}
+
 	return entry, nil
 }
 
