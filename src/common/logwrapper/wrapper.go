@@ -62,6 +62,14 @@ func CreateLogger(fields map[string]string) (logrus.FieldLogger, error) {
 		FunctionPrefixField: fields[FunctionPrefixField],
 	}
 
+	if fldCount > 2 {
+		for k, v := range fields {
+			if k != RequestIdField && k != FunctionPrefixField {
+				logFields[k] = v
+			}
+		}
+	}
+
 	return entry, nil
 }
 
