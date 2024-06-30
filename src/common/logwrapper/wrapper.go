@@ -70,6 +70,8 @@ func CreateLogger(fields map[string]string) (logrus.FieldLogger, error) {
 		}
 	}
 
+	entry := logrusLog.WithFields(logFields)
+
 	return entry, nil
 }
 
