@@ -62,5 +62,10 @@ func configureMgmtServer(e *echo.Echo, args []string) (int, func(), error) {
 		os.Exit(2)
 	}
 
+	// Prepare the server start function
+	startFunc := func() {
+
+	}
+
 	return 0, startFunc, nil
 }
