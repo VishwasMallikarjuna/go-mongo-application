@@ -65,6 +65,13 @@ func configureMgmtServer(e *echo.Echo, args []string) (int, func(), error) {
 	// Prepare the server start function
 	startFunc := func() {
 		err := error(nil)
+
+		err = e.Start(":1323")
+
+		if err != nil {
+			e.Logger.Fatal(err)
+			os.Exit(2)
+		}
 	}
 
 	return 0, startFunc, nil
