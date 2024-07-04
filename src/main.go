@@ -55,6 +55,11 @@ func configureMgmtServer(e *echo.Echo, args []string) (int, func(), error) {
 	e.Use(
 		middleware.RequestID(), // Generate a request id on the HTTP response headers
 	)
+	if logLvlInfoOrLess(logCfg) {
+		e.Use(
+			middleware.Logger(), // Log every request/response to stdout
+		)
+	}
 
 	err = mongo.ConnectFromConfig(config)
 	if err != nil {
