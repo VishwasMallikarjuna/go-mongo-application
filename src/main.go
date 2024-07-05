@@ -9,6 +9,7 @@ import (
 	mongo "github.com/VishwasMallikarjuna/go-mongo-appliacation/mongoApi"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
+	"github.com/sirupsen/logrus"
 )
 
 func main() {
@@ -20,6 +21,11 @@ func main() {
 
 	startServer()
 	os.Exit(0)
+}
+
+func logLvlInfoOrLess(logCfg *logwrapper.LogConfig) bool {
+	return logCfg.Level == logrus.InfoLevel || logCfg.Level == logrus.DebugLevel ||
+		logCfg.Level == logrus.TraceLevel
 }
 
 func configureMgmtServer(e *echo.Echo, args []string) (int, func(), error) {
