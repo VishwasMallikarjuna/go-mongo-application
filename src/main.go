@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 
 	"github.com/VishwasMallikarjuna/go-mongo-appliacation/common/config"
@@ -84,6 +85,13 @@ func configureMgmtServer(e *echo.Echo, args []string) (int, func(), error) {
 			os.Exit(2)
 		}
 	}
+
+	// Configure the endpoint routes
+
+	// Endpoint for ready/liveness probes
+	e.GET("/alive", func(c echo.Context) error {
+		return c.String(http.StatusOK, "yes")
+	})
 
 	return 0, startFunc, nil
 }
