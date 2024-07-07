@@ -93,5 +93,9 @@ func configureMgmtServer(e *echo.Echo, args []string) (int, func(), error) {
 		return c.String(http.StatusOK, "yes")
 	})
 
+	// Healthcheck routing
+	healthcheckHandler := healthcheck.NewHandler(config)
+	e.GET("/healthcheck", healthcheckHandler.HriHealthcheck)
+
 	return 0, startFunc, nil
 }
