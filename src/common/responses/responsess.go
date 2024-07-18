@@ -12,3 +12,13 @@ func NewErrorDetail(requestId string, description string) *ErrorDetail {
 	}
 	return &errorDetail
 }
+
+func NewErrorDetailResponse(code int, requestId string, description string) *ErrorDetailResponse {
+	return &ErrorDetailResponse{
+		Code: code,
+		Body: &ErrorDetail{
+			ErrorEventId:     requestId,
+			ErrorDescription: description,
+		},
+	}
+}
