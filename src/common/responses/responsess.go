@@ -13,6 +13,11 @@ func NewErrorDetail(requestId string, description string) *ErrorDetail {
 	return &errorDetail
 }
 
+type ErrorDetailResponse struct {
+	Code int
+	Body *ErrorDetail
+}
+
 func NewErrorDetailResponse(code int, requestId string, description string) *ErrorDetailResponse {
 	return &ErrorDetailResponse{
 		Code: code,
