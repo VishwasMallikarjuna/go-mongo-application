@@ -2,8 +2,9 @@ package healthcheck
 
 import (
 	configPkg "github.com/VishwasMallikarjuna/go-mongo-appliacation/common/config"
+	"github.com/VishwasMallikarjuna/go-mongo-appliacation/common/response"
 	"go.mongodb.org/mongo-driver/mongo"
-)
+) 
 
 func NewHandler(config configPkg.Config) Handler {
 	return &theHandler{

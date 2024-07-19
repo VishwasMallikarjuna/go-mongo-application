@@ -1,4 +1,4 @@
-package responses
+package response
 
 type ErrorDetail struct {
 	ErrorEventId     string `json:"errorEventId"`
