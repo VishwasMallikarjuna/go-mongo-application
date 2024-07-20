@@ -3,8 +3,13 @@ package healthcheck
 import (
 	configPkg "github.com/VishwasMallikarjuna/go-mongo-appliacation/common/config"
 	"github.com/VishwasMallikarjuna/go-mongo-appliacation/common/response"
+	"github.com/labstack/echo"
 	"go.mongodb.org/mongo-driver/mongo"
-) 
+)
+
+type Handler interface {
+	HriHealthcheck(echo.Context) error
+}
 
 func NewHandler(config configPkg.Config) Handler {
 	return &theHandler{
