@@ -7,8 +7,13 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
+type theHandler struct {
+	config         configPkg.Config
+	healthcheck func(string, *mongo.Collection) (int, *response.ErrorDetail)
+}
+
 type Handler interface {
-	HriHealthcheck(echo.Context) error
+	Healthcheck(echo.Context) error
 }
 
 func NewHandler(config configPkg.Config) Handler {
@@ -18,7 +23,7 @@ func NewHandler(config configPkg.Config) Handler {
 	}
 }
 
-type theHandler struct {
-	config      configPkg.Config
-	healthcheck func(string, *mongo.Collection) (int, *response.ErrorDetail)
+func (h *theHandler) Healthcheck(c echo.Context) error {
+	
+	return c.NoContent(code)
 }
