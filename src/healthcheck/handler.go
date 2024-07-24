@@ -1,9 +1,12 @@
 package healthcheck
 
 import (
+	"net/http"
+
 	configPkg "github.com/VishwasMallikarjuna/go-mongo-appliacation/common/config"
 	"github.com/VishwasMallikarjuna/go-mongo-appliacation/common/logwrapper"
 	"github.com/VishwasMallikarjuna/go-mongo-appliacation/common/response"
+	"github.com/VishwasMallikarjuna/go-mongo-appliacation/mongoApi"
 	"github.com/labstack/echo"
 	"go.mongodb.org/mongo-driver/mongo"
 )
@@ -30,6 +33,11 @@ func (h *theHandler) Healthcheck(c echo.Context) error {
 	prefix := "healthcheck/handler"
 	var logger = logwrapper.GetMyLogger(requestId, prefix)
 	logger.Debug("Start Healthcheck Handler")
+
+	code, errorDetail := h.healthcheck(requestId, mongoApi.GetMongoCollection(h.config.MongoColName), healthChecker)
+	if errorDetail != nil {
+		return c.JSON(http.StatusInternalServerError, errorDetail)
+	}
 
 	return c.NoContent(code)
 }
