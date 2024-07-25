@@ -34,7 +34,7 @@ func (h *theHandler) Healthcheck(c echo.Context) error {
 	var logger = logwrapper.GetMyLogger(requestId, prefix)
 	logger.Debug("Start Healthcheck Handler")
 
-	code, errorDetail := h.healthcheck(requestId, mongoApi.GetMongoCollection(h.config.MongoColName), healthChecker)
+	code, errorDetail := h.healthcheck(requestId, mongoApi.GetMongoCollection(h.config.MongoColName))
 	if errorDetail != nil {
 		return c.JSON(http.StatusInternalServerError, errorDetail)
 	}
