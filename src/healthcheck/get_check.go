@@ -19,4 +19,14 @@ func GetCheck(requestId string, client *mongo.Collection) (int, *response.ErrorD
 	if err != nil {
 		return http.StatusServiceUnavailable, mongoApi.LogAndBuildErrorDetail(requestId, http.StatusServiceUnavailable, logger, "Could not perform Cosmos health check")
 	}
+
+	var mErrMsg = ""
+	if health_status != "1" {
+		mErrMsg = ServiceUnavailableMsg
+		logger.Errorln(mErrMsg)
+		return http.StatusServiceUnavailable, response.NewErrorDetail(requestId, mErrMsg)
+
+	}
+
+	return http.StatusOK, nil
 }
