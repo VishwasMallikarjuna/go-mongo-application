@@ -9,6 +9,8 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
+const ServiceUnavailableMsg string = "Service Temporarily Unavailable | error Detail: %v"
+
 func GetCheck(requestId string, client *mongo.Collection) (int, *response.ErrorDetail) {
 	prefix := "healthcheck/getCheck"
 	var logger = logwrapper.GetMyLogger(requestId, prefix)
