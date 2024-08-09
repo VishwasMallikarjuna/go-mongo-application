@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/VishwasMallikarjuna/go-mongo-appliacation/common/response"
+	"github.com/VishwasMallikarjuna/go-mongo-application/common/response"
 	"github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"

@@ -3,10 +3,10 @@ package healthcheck
 import (
 	"net/http"
 
-	configPkg "github.com/VishwasMallikarjuna/go-mongo-appliacation/common/config"
-	"github.com/VishwasMallikarjuna/go-mongo-appliacation/common/logwrapper"
-	"github.com/VishwasMallikarjuna/go-mongo-appliacation/common/response"
-	"github.com/VishwasMallikarjuna/go-mongo-appliacation/mongoApi"
+	configPkg "github.com/VishwasMallikarjuna/go-mongo-application/common/config"
+	"github.com/VishwasMallikarjuna/go-mongo-application/common/logwrapper"
+	"github.com/VishwasMallikarjuna/go-mongo-application/common/response"
+	"github.com/VishwasMallikarjuna/go-mongo-application/mongoApi"
 	"github.com/labstack/echo"
 	"go.mongodb.org/mongo-driver/mongo"
 )
