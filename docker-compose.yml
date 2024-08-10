@@ -12,5 +12,19 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
 
+  goapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: goapp
+    ports:
+      - "1323:1323"  # Updated to match the port your Go application listens on
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URI=mongodb://root:example@mongodb:27017
+    volumes:
+      - ./config.yml:/root/config.yml  # Mount only the config file
+
 volumes:
   mongo-data:
