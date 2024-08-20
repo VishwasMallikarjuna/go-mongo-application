@@ -14,3 +14,4 @@ $(TEST): $(SRCS) src/go.mod src/go.sum
 
 clean:
 	-rm ./bin/go-mongo-application
+	-rm ./src/testCoverage.out
