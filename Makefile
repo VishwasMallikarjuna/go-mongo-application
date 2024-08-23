@@ -20,5 +20,6 @@ clean:
 docker_up:
 	@docker compose up --build
 
+.PHONY: coverage
 coverage:
 	cd src; go tool cover -html=testCoverage.out
