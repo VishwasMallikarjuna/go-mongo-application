@@ -98,8 +98,8 @@ func configureMgmtServer(e *echo.Echo, args []string) (int, func(), error) {
 	healthcheckHandler := healthcheck.NewHandler(config)
 	e.GET("/healthcheck", healthcheckHandler.Healthcheck)
 
-	basicMongoHandler := basicMongo.NewHandler(config)
-	e.GET("/users", basicMongoHandler.GetUsers)
+	mongoHandler := mongo.NewHandler(config)
+	e.GET("/users", mongoHandler.GetUsers)
 
 	return 0, startFunc, nil
 }
