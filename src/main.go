@@ -8,6 +8,7 @@ import (
 	"github.com/VishwasMallikarjuna/go-mongo-application/common/config"
 	"github.com/VishwasMallikarjuna/go-mongo-application/common/logwrapper"
 	"github.com/VishwasMallikarjuna/go-mongo-application/healthcheck"
+	mongohandler "github.com/VishwasMallikarjuna/go-mongo-application/mongo"
 	mongo "github.com/VishwasMallikarjuna/go-mongo-application/mongoApi"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -98,8 +99,8 @@ func configureMgmtServer(e *echo.Echo, args []string) (int, func(), error) {
 	healthcheckHandler := healthcheck.NewHandler(config)
 	e.GET("/healthcheck", healthcheckHandler.Healthcheck)
 
-	mongoHandler := mongo.NewHandler(config)
-	e.GET("/users", mongoHandler.GetUsers)
+	mongoHandler := mongohandler.NewHandler(config)
+	e.GET("/users", mongoHandler.Create)
 
 	return 0, startFunc, nil
 }
