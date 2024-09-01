@@ -20,3 +20,7 @@ func TestNewHandler(t *testing.T) {
 	// This asserts that they are the same function by memory address
 	assert.Equal(t, reflect.ValueOf(GetCheck), reflect.ValueOf(handler.healthcheck))
 }
+
+func TestHealthcheckHandler(t *testing.T) {
+
+}
