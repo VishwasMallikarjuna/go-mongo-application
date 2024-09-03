@@ -22,5 +22,7 @@ func TestNewHandler(t *testing.T) {
 }
 
 func TestHealthcheckHandler(t *testing.T) {
-
+	validConfig := config.Config{
+		ConfigPath: "",
+	}
 }
