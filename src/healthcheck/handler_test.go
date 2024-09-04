@@ -25,4 +25,22 @@ func TestHealthcheckHandler(t *testing.T) {
 	validConfig := config.Config{
 		ConfigPath: "",
 	}
+
+	tests := []struct {
+		name         string
+		handler      *theHandler
+		expectedCode int
+		expectedBody string
+	}{
+		{
+			name: "Good healthcheck",
+			handler: &theHandler{
+				config: validConfig,
+				hriHealthcheck: func(requestId string, healthChecker kafka.HealthChecker) (int, *response.ErrorDetail) {
+					return http.StatusOK, nil
+				},
+			},
+			expectedCode: http.StatusOK,
+			expectedBody: "",
+		}
 }
