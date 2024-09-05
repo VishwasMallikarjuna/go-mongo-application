@@ -42,5 +42,16 @@ func TestHealthcheckHandler(t *testing.T) {
 			},
 			expectedCode: http.StatusOK,
 			expectedBody: "",
-		}
+		},
+		{
+			name: "Bad healthcheck",
+			handler: &theHandler{
+				config: config.Config{},
+				hriHealthcheck: func(requestId string, healthChecker kafka.HealthChecker) (int, *response.ErrorDetail) {
+					return http.StatusServiceUnavailable, response.NewErrorDetail(requestId, "Cosmos not available")
+				},
+			},
+			expectedCode: http.StatusInternalServerError,
+			expectedBody: "{\"errorEventId\":\"" + requestId + "\",\"errorDescription\":\"Cosmos not available\"}\n",
+		},
 }
