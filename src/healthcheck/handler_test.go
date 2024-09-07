@@ -1,10 +1,14 @@
 package healthcheck
 
 import (
+	"net/http"
+	"os"
 	"reflect"
 	"testing"
 
 	"github.com/VishwasMallikarjuna/go-mongo-application/common/config"
+	"github.com/VishwasMallikarjuna/go-mongo-application/common/logwrapper"
+	"github.com/VishwasMallikarjuna/go-mongo-application/common/response"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -54,4 +58,8 @@ func TestHealthcheckHandler(t *testing.T) {
 			expectedCode: http.StatusInternalServerError,
 			expectedBody: "{\"errorEventId\":\"" + requestId + "\",\"errorDescription\":\"Cosmos not available\"}\n",
 		},
+	}
+
+	logwrapper.Initialize("error", os.Stdout)
+	e := test.GetTestServer()
 }
