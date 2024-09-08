@@ -2,6 +2,7 @@ package healthcheck
 
 import (
 	"net/http"
+	"net/http/httptest"
 	"os"
 	"reflect"
 	"testing"
@@ -9,6 +10,7 @@ import (
 	"github.com/VishwasMallikarjuna/go-mongo-application/common/config"
 	"github.com/VishwasMallikarjuna/go-mongo-application/common/logwrapper"
 	"github.com/VishwasMallikarjuna/go-mongo-application/common/response"
+	"github.com/labstack/echo"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -62,4 +64,16 @@ func TestHealthcheckHandler(t *testing.T) {
 
 	logwrapper.Initialize("error", os.Stdout)
 	e := test.GetTestServer()
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			request := httptest.NewRequest(http.MethodGet, "/healthcheck", nil)
+			context, recorder := test.PrepareHeadersContextRecorder(request, e)
+			context.Response().Header().Add(echo.HeaderXRequestID, requestId)
+
+			if assert.NoError(t, tt.handler.HriHealthcheck(context)) {
+				assert.Equal(t, tt.expectedCode, recorder.Code)
+				assert.Equal(t, tt.expectedBody, recorder.Body.String())
+			}
+		})
+	}
 }
