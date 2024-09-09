@@ -42,7 +42,7 @@ func TestHealthcheckHandler(t *testing.T) {
 			name: "Good healthcheck",
 			handler: &theHandler{
 				config: validConfig,
-				hriHealthcheck: func(requestId string, healthChecker kafka.HealthChecker) (int, *response.ErrorDetail) {
+				healthcheck: func(requestId string, healthChecker kafka.HealthChecker) (int, *response.ErrorDetail) {
 					return http.StatusOK, nil
 				},
 			},

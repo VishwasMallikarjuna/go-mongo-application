@@ -29,12 +29,12 @@ func NewHandler(config configPkg.Config) Handler {
 
 func (h *theHandler) Healthcheck(c echo.Context) error {
 
-	requestId := c.Response().Header().Get(echo.HeaderXRequestID)
+	requestID := c.Response().Header().Get(echo.HeaderXRequestID)
 	prefix := "healthcheck/handler"
-	var logger = logwrapper.GetMyLogger(requestId, prefix)
+	var logger = logwrapper.GetMyLogger(requestID, prefix)
 	logger.Debug("Start Healthcheck Handler")
 
-	code, errorDetail := h.healthcheck(requestId, mongoApi.GetMongoCollection(h.config.MongoColName))
+	code, errorDetail := h.healthcheck(requestID, mongoApi.GetMongoCollection(h.config.MongoColName))
 	if errorDetail != nil {
 		return c.JSON(http.StatusInternalServerError, errorDetail)
 	}
