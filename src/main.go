@@ -100,7 +100,7 @@ func configureMgmtServer(e *echo.Echo, args []string) (int, func(), error) {
 	e.GET("/healthcheck", healthcheckHandler.Healthcheck)
 
 	mongoHandler := mongohandler.NewHandler(config)
-	e.GET("/users", mongoHandler.Create)
-
+	e.POST("/users", mongoHandler.Create)
+	e.GET("/users", mongoHandler.Get)
 	return 0, startFunc, nil
 }

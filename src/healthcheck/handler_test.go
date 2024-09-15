@@ -1,16 +1,10 @@
 package healthcheck
 
 import (
-	"net/http"
-	"net/http/httptest"
-	"os"
 	"reflect"
 	"testing"
 
 	"github.com/VishwasMallikarjuna/go-mongo-application/common/config"
-	"github.com/VishwasMallikarjuna/go-mongo-application/common/logwrapper"
-	"github.com/VishwasMallikarjuna/go-mongo-application/common/response"
-	"github.com/labstack/echo"
 	"github.com/stretchr/testify/assert"
 )
 
