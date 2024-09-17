@@ -26,3 +26,7 @@ func NewHandler(config config.Config) Handler {
 func (h *theHandler) Create(c echo.Context) error {
 	return c.JSON(http.StatusCreated, nil)
 }
+
+func (h *theHandler) Get(c echo.Context) error {
+	return c.JSON(http.StatusOK, nil)
+}
