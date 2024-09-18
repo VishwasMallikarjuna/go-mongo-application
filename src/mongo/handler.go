@@ -9,17 +9,20 @@ import (
 
 type Handler interface {
 	Create(echo.Context) error
+	Get(echo.Context) error
 }
 
 type theHandler struct {
 	config config.Config
 	create func(string, string) (int, interface{})
+	get    func(string, string) (int, interface{})
 }
 
 func NewHandler(config config.Config) Handler {
 	return &theHandler{
 		config: config,
 		create: Create,
+		get:    Get,
 	}
 }
 
