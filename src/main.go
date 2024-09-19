@@ -102,5 +102,6 @@ func configureMgmtServer(e *echo.Echo, args []string) (int, func(), error) {
 	mongoHandler := mongohandler.NewHandler(config)
 	e.POST("/users", mongoHandler.Create)
 	e.GET("/users", mongoHandler.Get)
+	e.PUT("/users", mongoHandler.Update)
 	return 0, startFunc, nil
 }
