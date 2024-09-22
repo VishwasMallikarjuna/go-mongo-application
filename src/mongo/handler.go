@@ -10,6 +10,7 @@ import (
 type Handler interface {
 	Create(echo.Context) error
 	Get(echo.Context) error
+	Update(echo.Context) error
 }
 
 type theHandler struct {
