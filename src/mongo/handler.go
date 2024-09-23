@@ -17,6 +17,7 @@ type theHandler struct {
 	config config.Config
 	create func(string, string) (int, interface{})
 	get    func(string, string) (int, interface{})
+	update func(string, string) (int, interface{})
 }
 
 func NewHandler(config config.Config) Handler {
@@ -24,6 +25,7 @@ func NewHandler(config config.Config) Handler {
 		config: config,
 		create: Create,
 		get:    Get,
+		update: Update,
 	}
 }
 
