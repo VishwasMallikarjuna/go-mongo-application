@@ -103,5 +103,6 @@ func configureMgmtServer(e *echo.Echo, args []string) (int, func(), error) {
 	e.POST("/users", mongoHandler.Create)
 	e.GET("/users", mongoHandler.Get)
 	e.PUT("/users", mongoHandler.Update)
+	e.DELETE("/users", mongoHandler.Delete)
 	return 0, startFunc, nil
 }
