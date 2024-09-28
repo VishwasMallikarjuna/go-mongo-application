@@ -1,6 +1,6 @@
 # go-mongo-application
 
-MongoDb connectivity with go on production level.
+This is a production-ready CRUD application built using Go and MongoDB. The application provides a RESTful API for managing resources, with features such as create, read, update, and delete operations.
 
 ### Configuration
 
