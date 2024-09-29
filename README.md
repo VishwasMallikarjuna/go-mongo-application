@@ -13,5 +13,15 @@ mongoDb-name: "database-name"
 mongoCol-name: "collection-name"
 ```
 
+## Features
+
+- RESTful API
+- MongoDB integration
+<!-- - JWT Authentication
+- Input validation
+- Error handling
+- Logging -->
+- Environment configuration
+
 ### Docker
 
