@@ -19,8 +19,8 @@ mongoCol-name: "collection-name"
 - MongoDB integration
 <!-- - JWT Authentication
 - Input validation
-- Error handling
-- Logging -->
+- Error handling -->
+- Logging
 - Environment configuration
 
 ### Docker
