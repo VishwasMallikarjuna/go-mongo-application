@@ -11,6 +11,7 @@ type Handler interface {
 	Create(echo.Context) error
 	Get(echo.Context) error
 	Update(echo.Context) error
+	Delete(echo.Context) error
 }
 
 type theHandler struct {
