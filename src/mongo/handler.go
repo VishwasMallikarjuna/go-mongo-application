@@ -19,6 +19,7 @@ type theHandler struct {
 	create func(string, string) (int, interface{})
 	get    func(string, string) (int, interface{})
 	update func(string, string) (int, interface{})
+	deelte func(string, string) (int, interface{})
 }
 
 func NewHandler(config config.Config) Handler {
