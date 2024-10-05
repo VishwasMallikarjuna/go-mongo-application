@@ -28,6 +28,7 @@ func NewHandler(config config.Config) Handler {
 		create: Create,
 		get:    Get,
 		update: Update,
+		delete: Delete,
 	}
 }
 
