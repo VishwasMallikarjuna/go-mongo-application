@@ -39,3 +39,7 @@ func (h *theHandler) Create(c echo.Context) error {
 func (h *theHandler) Get(c echo.Context) error {
 	return c.JSON(http.StatusOK, nil)
 }
+
+func (h *theHandler) Update(c echo.Context) error {
+	return c.JSON(http.StatusOK, nil)
+}
